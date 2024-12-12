@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeCraft Challenge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffebe6; /* Light red for the background */
+            color: #000; /* Black text */
+        }
+
+        header {
+            background-color: #d71920; /* Bold red like the border in the poster */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background-color: #f49c04; /* Yellow-gold for the navigation bar */
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: white;
+            border: 2px solid #f49c04; /* Yellow-gold for section borders */
+            border-radius: 10px;
+        }
+
+        footer {
+            background-color: #d71920; /* Same red as the header */
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CTF Starter Pack</h1>
+        <p>Welcome to the official CTF Starter Pack portal!</p>
+    </header>
+
+    <nav>
+        <a href="#challenges">Challenges</a>
+        <a href="#rules">Rules</a>
+        <a href="#scoreboard">Scoreboard</a>
+    </nav>
+
+    <main>
+        <section id="challenges">
+            <h2>Challenges</h2>
+            <p>Explore and attempt the challenges. Click on a category to view more:</p>
+            <ul>
+                <li><a href="challenges/web/">Web Challenges</a></li>
+                <li><a href="challenges/reverse/">Reverse Engineering</a></li>
+              <li><a href="challenges/osint/">OSINT</a></li>
+              <li><a href="challenges/forensics/">Forensics</a></li>
+              <li><a href="challenges/crypto/">Cryptography</a></li>
+            </ul>
+        </section>
+
+        <section id="rules">
+            <h2>Rules</h2>
+            <p>Here are the guidelines for participating in the CTF Starter Pack. Make sure to follow them:</p>
+            <ul>
+                <li>Follow the submission format for challenges.</li>
+                <li>Be respectful to other participants.</li>
+                <li>No malicious activities allowed.</li>
+            </ul>
+        </section>
+
+        <section id="scoreboard">
+            <h2>Scoreboard</h2>
+            <p>The scoreboard will update dynamically as participants solve challenges.</p>
+            <p><a href="scoreboard/index.html">View the Scoreboard</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 CTF Starter Pack | Organized by NETSA & FTMK UTeM</p>
+    </footer>
+</body>
+</html>
