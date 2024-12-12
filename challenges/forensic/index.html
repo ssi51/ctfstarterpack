@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forensics Challenge 1: The Case of the Sneaky Hacker</title>
+    <link rel="stylesheet" href="../../styles/main.css"> <!-- Link to your main stylesheet -->
+</head>
+<body>
+    <header>
+        <h1>Forensics Challenge 1: The Case of the Sneaky Hacker</h1>
+    </header>
+
+    <main>
+        <section id="challenge-description">
+            <h2>Challenge Description</h2>
+            <p>Uh oh! It looks like someone’s been sneaking around in the system like a ninja at midnight. 
+            <p>You’ve been handed the case of a malicious intruder—someone who’s been messing with files, trying to log in, and generally causing a ruckus.</p>
+            <p>But guess what? The logs don't lie! Your mission, should you choose to accept it, is to figure out who the culprit is.</p>
+            <p>No, it's not your regular office prankster trying to access the boss’s cat videos. This is a serious case of hacking shenanigans.</p>
+            <p>Your job is to find the malicious IP address and nail this culprit down. Time to put on your detective hat!</p>
+    
+            <p><strong>Generated Logs</strong></p>
+            <pre style="background-color: #1e1e1e; color: #f1f1f1; padding: 10px; border-radius: 5px; font-family: 'Courier New', Courier, monospace;">
+2024-12-01 09:01:45,123 - INFO - User admin logged in from IP 192.168.1.10
+2024-12-01 09:03:50,234 - INFO - User admin accessed /home/admin/secure_data.txt
+2024-12-01 09:10:05,456 - WARNING - User admin failed login attempt (incorrect password)
+2024-12-01 09:11:10,567 - INFO - User admin logged out
+2024-12-01 09:15:25,678 - INFO - User john logged in from IP 192.168.1.20
+2024-12-01 09:18:40,789 - INFO - User john accessed /home/john/notes.txt
+2024-12-01 09:20:00,890 - WARNING - User john failed login attempt (incorrect password)
+2024-12-01 09:25:05,012 - INFO - User admin logged in from IP 192.168.1.10
+2024-12-01 09:28:15,123 - INFO - User admin accessed /home/admin/important_file.txt
+2024-12-01 09:30:25,234 - WARNING - User admin failed login attempt (incorrect password)
+2024-12-01 09:35:00,345 - INFO - User alice logged in from IP 192.168.1.30
+2024-12-01 09:40:10,456 - INFO - User alice accessed /home/alice/important_project.doc
+2024-12-01 09:42:00,567 - WARNING - User alice failed login attempt (incorrect password)
+2024-12-01 09:45:55,678 - INFO - User malicious logged in from IP 192.168.2.45
+2024-12-01 09:47:15,789 - INFO - User malicious accessed /home/admin/secure_data.txt
+2024-12-01 09:48:30,890 - INFO - User malicious deleted /home/admin/secure_data.txt
+2024-12-01 09:50:45,012 - WARNING - User malicious failed login attempt (incorrect password)
+2024-12-01 09:55:00,123 - INFO - User malicious logged out
+2024-12-01 09:57:35,234 - INFO - User john logged in from IP 192.168.1.20
+2024-12-01 09:58:00,345 - INFO - User john accessed /home/john/notes.txt
+            </pre>
+              
+        </section>
+
+        <section id="flag-submission">
+            <h2>Submit Your Flag</h2>
+            <p>If you have solved this challenge, submit your flag below:</p>
+            <form id="flag-form">
+                <label for="flag">Enter Flag:</label>
+                <input type="text" id="flag" name="flag" placeholder="CTF{ipaddress}" required>
+                <button type="submit">Submit Flag</button>
+            </form>
+            <p id="submission-response" style="display:none;"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 CTF Starter Pack | Organized by NETSA & FTMK UTeM</p>
+    </footer>
+
+    <script>
+        // Simple flag checking (for static pages)
+        const correctFlag = "CTF{192.168.2.4}";  // This should match the correct flag
+        const form = document.getElementById("flag-form");
+        const responseElement = document.getElementById("submission-response");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            const enteredFlag = document.getElementById("flag").value.trim();
+            
+            if (enteredFlag === correctFlag) {
+                responseElement.style.color = "green";
+                responseElement.textContent = "Correct! Well done.";
+            } else {
+                responseElement.style.color = "red";
+                responseElement.textContent = "Incorrect flag. Please try again.";
+            }
+            
+            responseElement.style.display = "block";  // Show response message
+        });
+    </script>
+</body>
+</html>
