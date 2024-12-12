@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Challenge 1: Inspector Gadget</title>
+    <link rel="stylesheet" href="../../styles/main.css"> <!-- Link to your main stylesheet -->
+</head>
+<body>
+    <header>
+        <h1>Web Challenge 1: Inspector Gadget</h1>
+    </header>
+
+    <main>
+        <section id="challenge-description">
+            <h2>Challenge Description</h2>
+            <p>Welcome to the Inspector Gadget challenge! Somewhere on this page (or nearby), there’s a secret flag waiting to be found.
+            <p>Pro tip: Inspect everything—you never know what might be hiding in plain sight.</p>
+            <p><strong>Visit here:</strong> <a href="challenges/web/secretpage.html">mysecretpage.com</a></p>
+        </section>
+
+        <section id="flag-submission">
+            <h2>Submit Your Flag</h2>
+            <p>If you have solved this challenge, submit your flag below:</p>
+            <form id="flag-form">
+                <label for="flag">Enter Flag:</label>
+                <input type="text" id="flag" name="flag" placeholder="CTF{flag}" required>
+                <button type="submit">Submit Flag</button>
+            </form>
+            <p id="submission-response" style="display:none;"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 CTF Starter Pack | Organized by NETSA & FTMK UTeM</p>
+    </footer>
+
+    <script>
+        // Simple flag checking (for static pages)
+        const correctFlag = "CTF{Inspect_All_The_Things}";  // This should match the correct flag
+        const form = document.getElementById("flag-form");
+        const responseElement = document.getElementById("submission-response");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            const enteredFlag = document.getElementById("flag").value.trim();
+            
+            if (enteredFlag === correctFlag) {
+                responseElement.style.color = "green";
+                responseElement.textContent = "Correct! Well done.";
+            } else {
+                responseElement.style.color = "red";
+                responseElement.textContent = "Incorrect flag. Please try again.";
+            }
+            
+            responseElement.style.display = "block";  // Show response message
+        });
+    </script>
+</body>
+</html>
