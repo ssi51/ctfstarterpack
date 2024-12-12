@@ -5,6 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forensics Challenge 1: The Case of the Sneaky Hacker</title>
     <link rel="stylesheet" href="../../styles/main.css"> <!-- Link to your main stylesheet -->
+    <style>
+        /* Style for the challenge button */
+        .challenge-button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            background-color: #d71920; /* Default Red background */
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .challenge-button:hover {
+            background-color: #f49c04; /* Yellow-gold on hover */
+            transform: scale(1.05);
+        }
+
+        .completed {
+            background-color: #28a745; /* Green when completed */
+        }
+
+        /* Style for the score display */
+        .score-display {
+            background-color: #f49c04;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Styling for the flag submission response */
+        .submission-response {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .submission-response.green {
+            color: green;
+        }
+
+        .submission-response.red {
+            color: red;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -14,13 +65,13 @@
     <main>
         <section id="challenge-description">
             <h2>Challenge Description</h2>
-            <p>Uh oh! It looks like someone’s been sneaking around in the system like a ninja at midnight. 
+            <p>Uh oh! It looks like someone’s been sneaking around in the system like a ninja at midnight.</p>
             <p>You’ve been handed the case of a malicious intruder—someone who’s been messing with files, trying to log in, and generally causing a ruckus.</p>
             <p>But guess what? The logs don't lie! Your mission, should you choose to accept it, is to figure out who the culprit is.</p>
             <p>No, it's not your regular office prankster trying to access the boss’s cat videos. This is a serious case of hacking shenanigans.</p>
             <p>Your job is to find the malicious IP address and nail this culprit down. Time to put on your detective hat!</p>
     
-            <p><strong>Generated Logs</strong></p>
+            <p><strong>Generated Logs:</strong></p>
             <pre style="background-color: #1e1e1e; color: #f1f1f1; padding: 10px; border-radius: 5px; font-family: 'Courier New', Courier, monospace;">
 2024-12-01 09:01:45,123 - INFO - User admin logged in from IP 192.168.1.10
 2024-12-01 09:03:50,234 - INFO - User admin accessed /home/admin/secure_data.txt
@@ -54,7 +105,7 @@
                 <input type="text" id="flag" name="flag" placeholder="CTF{ipaddress}" required>
                 <button type="submit">Submit Flag</button>
             </form>
-            <p id="submission-response" style="display:none;"></p>
+            <p id="submission-response" class="submission-response"></p>
         </section>
     </main>
 
@@ -63,25 +114,51 @@
     </footer>
 
     <script>
-        // Simple flag checking (for static pages)
-        const correctFlag = "CTF{192.168.2.45}";  // This should match the correct flag
+        // Correct flag for this challenge
+        const correctFlag = "CTF{192.168.2.45}"; // The malicious IP address
         const form = document.getElementById("flag-form");
         const responseElement = document.getElementById("submission-response");
+
+        // Track the completed challenges
+        const completedChallenges = JSON.parse(localStorage.getItem('completedChallenges')) || [];
 
         form.addEventListener("submit", function(event) {
             event.preventDefault();
             const enteredFlag = document.getElementById("flag").value.trim();
-            
+
+            // Check if the entered flag is correct
             if (enteredFlag === correctFlag) {
+                // Add 10 points to the player's score
+                let score = localStorage.getItem('score') ? parseInt(localStorage.getItem('score')) : 0;
+                score += 10;
+                localStorage.setItem('score', score);
+
+                // Mark this challenge as completed
+                if (!completedChallenges.includes('challenge1')) {
+                    completedChallenges.push('challenge1');
+                    localStorage.setItem('completedChallenges', JSON.stringify(completedChallenges));
+                }
+
+                // Display success message
                 responseElement.style.color = "green";
-                responseElement.textContent = "Correct! Well done.";
+                responseElement.textContent = `Correct! You earned 10 points. Your score is now ${score} points.`;
+
+                // Update the challenge button to show it has been completed
+                document.getElementById("challenge1").classList.add("completed");
             } else {
+                // Display error message if the flag is incorrect
                 responseElement.style.color = "red";
                 responseElement.textContent = "Incorrect flag. Please try again.";
             }
-            
-            responseElement.style.display = "block";  // Show response message
+
+            // Show the response message
+            responseElement.style.display = "block";
         });
+
+        // Check if the challenge is completed and update the button color
+        if (completedChallenges.includes('challenge1')) {
+            document.getElementById("challenge1").classList.add("completed");
+        }
     </script>
 </body>
 </html>
