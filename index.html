@@ -30,15 +30,15 @@
         <section id="challenges">
             <h2>Challenges</h2>
             <p>Explore and attempt the challenges. Click on a category to view more:</p>
-            <ul>
-                <li><a href="challenges/web/">Web Challenges</a></li>
-                <li><a href="challenges/reverse/">Reverse Engineering</a></li>
-                <li><a href="challenges/osint/">OSINT</a></li>
-                <li><a href="challenges/forensics/">Forensics</a></li>
-                <li><a href="challenges/crypto/">Cryptography</a></li>
-                <li><a href="challenges/crypto/challenge1/">Julius' Jumbled Love Letter</a></li>
-                <li><a href="challenges/crypto/challenge2/">Keep It KEY-zy</a></li>
-            </ul>
+            <div class="button-container">
+                <!-- Challenge Buttons -->
+                <button class="challenge-button" onclick="window.location.href='challenges/crypto/'">Cryptography</button>
+                <button class="challenge-button" onclick="window.location.href='challenges/osint/'">OSINT</button>
+                <button class="challenge-button" onclick="window.location.href='challenges/forensic'">Forensic</button>
+                <button class="challenge-button" onclick="window.location.href='challenges/reverse'">Reverse Engineering</button>
+                <button class="challenge-button" onclick="window.location.href='challenges/web'">Web</button>
+                <!-- More categories/buttons can be added as you grow the challenges -->
+            </div>
         </section>
 
         <section id="rules">
