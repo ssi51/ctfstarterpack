@@ -107,3 +107,24 @@ button:hover {
     background-color: #a5161c;
     transform: scale(1.05);
 }
+
+.challenge-button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            background-color: #d71920; /* Red background */
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .challenge-button:hover {
+            background-color: #f49c04; /* Yellow-gold on hover */
+            transform: scale(1.05);
+        }
