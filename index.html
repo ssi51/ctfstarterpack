@@ -6,6 +6,33 @@
     <title>CTF Starter Pack</title>
     <!-- Link to external CSS file -->
     <link rel="stylesheet" href="styles/main.css">
+    <style>
+        /* Style for the challenge buttons */
+        .challenge-button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            background-color: #d71920; /* Default Red background */
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .challenge-button:hover {
+            background-color: #f49c04; /* Yellow-gold on hover */
+            transform: scale(1.05);
+        }
+
+        .completed {
+            background-color: #28a745; /* Green when completed */
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -32,12 +59,18 @@
             <p>Explore and attempt the challenges. Click on a category to view more:</p>
             <div class="button-container">
                 <!-- Challenge Buttons -->
-                <button class="challenge-button" onclick="window.location.href='challenges/crypto/index.html'">Cryptography</button>
-                <button class="challenge-button" onclick="window.location.href='challenges/osint/index.html'">OSINT</button>
-                <button class="challenge-button" onclick="window.location.href='challenges/forensic/index.html'">Forensic</button>
-                <button class="challenge-button" onclick="window.location.href='challenges/reverse/index.html'">Reverse Engineering</button>
-                <button class="challenge-button" onclick="window.location.href='challenges/web/index.html'">Web</button>
-                <!-- More categories/buttons can be added as you grow the challenges -->
+                <button id="crypto" class="challenge-button" onclick="window.location.href='challenges/crypto/index.html'">Cryptography</button>
+                <button id="osint" class="challenge-button" onclick="window.location.href='challenges/osint/index.html'">OSINT</button>
+                <button id="forensic" class="challenge-button" onclick="window.location.href='challenges/forensic/index.html'">Forensic</button>
+                <button id="web" class="challenge-button" onclick="window.location.href='challenges/web/index.html'">Web</button>
+            </div>
+        </section>
+
+        <!-- Display Player's Score -->
+        <section id="score-display-section">
+            <h2>Your Current Score:</h2>
+            <div id="score-display" class="score-display">
+                Loading...
             </div>
         </section>
 
@@ -49,12 +82,6 @@
                 <li>Be respectful to other participants.</li>
                 <li>No malicious activities allowed.</li>
             </ul>
-        </section>
-
-        <section id="scoreboard">
-            <h2>Scoreboard</h2>
-            <p>The scoreboard will update dynamically as participants solve challenges.</p>
-            <p><a href="scoreboard/index.html">View the Scoreboard</a></p>
         </section>
     </main>
 
@@ -93,6 +120,33 @@
             // Personalize the header with the username
             document.querySelector('header p').textContent = `Welcome, ${username}!`;
         }
+
+        // Get the player's score from localStorage
+        let score = localStorage.getItem('score') ? parseInt(localStorage.getItem('score')) : 0;
+
+        // Display the score on the main page
+        document.getElementById("score-display").textContent = `You have ${score} points.`;
+
+        // Check which challenges are completed
+        const completedChallenges = JSON.parse(localStorage.getItem('completedChallenges')) || [];
+
+        // If challenge1 is completed, make the button green
+        if (completedChallenges.includes('crypto')) {
+            document.getElementById('crypto').classList.add('completed');
+        }
+
+        if (completedChallenges.includes('osint')) {
+            document.getElementById('osint').classList.add('completed');
+        }
+
+        if (completedChallenges.includes('forensic')) {
+            document.getElementById('forensic').classList.add('completed');
+        }
+
+        if (completedChallenges.includes('web')) {
+            document.getElementById('web').classList.add('completed');
+        }
+        
     </script>
 </body>
 </html>
