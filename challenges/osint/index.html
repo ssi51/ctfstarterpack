@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,8 +16,10 @@
             <h2>Challenge Description</h2>
             <p>Your next mission takes you to the heart of UTeM, but not to any ordinary spot. </p>
             <p>This is a place on campus that holds the key to an ancient mystery—one that only the sharpest investigators can uncover.</p>
-            <p>Rumor has it that a forgotten sculpture lies hidden near the corner of the campus, surrounded by trees and tucked away from the bustling crowds.
+            <p>Rumor has it that a forgotten sculpture lies hidden near the corner of the campus, surrounded by trees and tucked away from the bustling crowds.</p>
             <p>Your task is simple: Find it. The flag should be in coordinates for example, 2°18'59.5"N 102°19'30.1"E</p>
+            
+            <!-- Image displaying the location -->
             <img src="/images/osint-image.jpg" alt="OSINT Image" width="600" height="400" />
         </section>
 
@@ -40,7 +41,7 @@
 
     <script>
         // Simple flag checking (for static pages)
-        const correctFlag = "CTF{2°18'58.1"N 102°19'30.4"E}";  // This should match the correct flag
+        const correctFlag = "CTF{2°18'58.1\"N 102°19'30.4\"E}";  // This should match the correct flag
         const form = document.getElementById("flag-form");
         const responseElement = document.getElementById("submission-response");
 
