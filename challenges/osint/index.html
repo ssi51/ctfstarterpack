@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSINT Challenge 1: Hidden Place</title>
+    <link rel="stylesheet" href="../../styles/main.css"> <!-- Link to your main stylesheet -->
+</head>
+<body>
+    <header>
+        <h1>OSINT Challenge 1: Hidden Place</h1>
+    </header>
+
+    <main>
+        <section id="challenge-description">
+            <h2>Challenge Description</h2>
+            <p>Your next mission takes you to the heart of UTeM, but not to any ordinary spot. </p>
+            <p>This is a place on campus that holds the key to an ancient mystery—one that only the sharpest investigators can uncover.</p>
+            <p>Rumor has it that a forgotten sculpture lies hidden near the corner of the campus, surrounded by trees and tucked away from the bustling crowds.
+            <p>Your task is simple: Find it. The flag should be in coordinates for example, 2°18'59.5"N 102°19'30.1"E</p>
+            <img src="/images/icon-128.png" alt="OSINT Image" width="600" height="400" />
+        </section>
+
+        <section id="flag-submission">
+            <h2>Submit Your Flag</h2>
+            <p>If you have solved this challenge, submit your flag below:</p>
+            <form id="flag-form">
+                <label for="flag">Enter Flag:</label>
+                <input type="text" id="flag" name="flag" placeholder="CTF{coordinates}" required>
+                <button type="submit">Submit Flag</button>
+            </form>
+            <p id="submission-response" style="display:none;"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 CTF Starter Pack | Organized by NETSA & FTMK UTeM</p>
+    </footer>
+
+    <script>
+        // Simple flag checking (for static pages)
+        const correctFlag = "CTF{2°18'58.1"N 102°19'30.4"E}";  // This should match the correct flag
+        const form = document.getElementById("flag-form");
+        const responseElement = document.getElementById("submission-response");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            const enteredFlag = document.getElementById("flag").value.trim();
+            
+            if (enteredFlag === correctFlag) {
+                responseElement.style.color = "green";
+                responseElement.textContent = "Correct! Well done.";
+            } else {
+                responseElement.style.color = "red";
+                responseElement.textContent = "Incorrect flag. Please try again.";
+            }
+            
+            responseElement.style.display = "block";  // Show response message
+        });
+    </script>
+</body>
+</html>
