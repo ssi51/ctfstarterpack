@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeCraft Challenge</title>
+    <title>CTF Starter Pack</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,7 +21,7 @@
         }
 
         nav {
-            display: flex;
+            display: none; /* Hide navigation until user logs in */
             justify-content: center;
             gap: 20px;
             background-color: #f49c04; /* Yellow-gold for the navigation bar */
@@ -59,6 +59,37 @@
             bottom: 0;
             width: 100%;
         }
+
+        .login-container {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border: 2px solid #f49c04;
+            border-radius: 10px;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #d71920;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #a5161c;
+        }
     </style>
 </head>
 <body>
@@ -67,22 +98,29 @@
         <p>Welcome to the official CTF Starter Pack portal!</p>
     </header>
 
-    <nav>
+    <div class="login-container" id="login-container">
+        <h2>Login</h2>
+        <p>Enter your username to access the portal:</p>
+        <input type="text" id="username" placeholder="Enter your username" />
+        <button onclick="login()">Login</button>
+    </div>
+
+    <nav id="nav-bar">
         <a href="#challenges">Challenges</a>
         <a href="#rules">Rules</a>
         <a href="#scoreboard">Scoreboard</a>
     </nav>
 
-    <main>
+    <main id="main-content" style="display: none;">
         <section id="challenges">
             <h2>Challenges</h2>
             <p>Explore and attempt the challenges. Click on a category to view more:</p>
             <ul>
                 <li><a href="challenges/web/">Web Challenges</a></li>
                 <li><a href="challenges/reverse/">Reverse Engineering</a></li>
-              <li><a href="challenges/osint/">OSINT</a></li>
-              <li><a href="challenges/forensics/">Forensics</a></li>
-              <li><a href="challenges/crypto/">Cryptography</a></li>
+                <li><a href="challenges/osint/">OSINT</a></li>
+                <li><a href="challenges/forensics/">Forensics</a></li>
+                <li><a href="challenges/crypto/">Cryptography</a></li>
             </ul>
         </section>
 
@@ -106,5 +144,38 @@
     <footer>
         <p>&copy; 2024 CTF Starter Pack | Organized by NETSA & FTMK UTeM</p>
     </footer>
+
+    <script>
+        // Check if the user is already logged in
+        window.onload = function () {
+            const username = localStorage.getItem('username');
+            if (username) {
+                showPortal(username);
+            }
+        };
+
+        function login() {
+            const username = document.getElementById('username').value.trim();
+            if (username) {
+                // Store the username in localStorage
+                localStorage.setItem('username', username);
+                showPortal(username);
+            } else {
+                alert('Please enter a username!');
+            }
+        }
+
+        function showPortal(username) {
+            // Hide the login container
+            document.getElementById('login-container').style.display = 'none';
+
+            // Show the navigation bar and main content
+            document.getElementById('nav-bar').style.display = 'flex';
+            document.getElementById('main-content').style.display = 'block';
+
+            // Personalize the header with the username
+            document.querySelector('header p').textContent = `Welcome, ${username}!`;
+        }
+    </script>
 </body>
 </html>
